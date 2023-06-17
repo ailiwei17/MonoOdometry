@@ -18,7 +18,7 @@ if __name__ == "__main__":
         if ret:
             image, result = frame.process_frame()
             if result is not None and ba:
-                opt = optimizer.BundleAdjustmentOptimer(result[0], result[1], result[2])
+                opt = optimizer.BundleAdjustmentOptimer(result[0], result[1], result[2], K)
                 frame.update(opt.update())
         else:
             break
