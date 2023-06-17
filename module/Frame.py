@@ -21,6 +21,10 @@ class Frame(object):
         self.norm_now_kps, self.norm_last_kps = None, None
         self.k = k
 
+    def update(self, now_pose):
+        self.now_pose = now_pose
+        Frame.last_pose = self.now_pose
+
     def process_frame(self):
         """处理图像"""
         self.now_kps, self.now_des = self.extract_points()
@@ -28,6 +32,7 @@ class Frame(object):
         # 初始化
         if self.idx == 1:
             self.now_pose = np.eye(4)
+            result = None
         else:
             # 寻找匹配上的关键点
             match_kps = self.match_points()
@@ -49,9 +54,10 @@ class Frame(object):
             self.last_kps = self.last_kps[good_pt4d]
             self.now_kps = self.now_kps[good_pt4d]
             self.draw_points()
+            result = [self.now_pose, points4d[good_pt4d], self.now_kps]
         Frame.last_pose = self.now_pose
         Frame.last_Rt = self.now_Rt
-        return self.image, self.now_pose
+        return self.image, result
 
     def extract_points(self):
         """提取角点"""

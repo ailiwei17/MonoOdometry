@@ -25,7 +25,11 @@ This repository is used for the navigation team training of the 2024 season. The
 
 [测试视频](https://tj-superpower.feishu.cn/file/XdFLbu70ao8FTZx2MSccMisFnXd)
 
-## 3. 等待施工的项目
+## 3. 说明
+详细的原理在代码中说明
+
+
+## 4. 等待施工的项目
 
 | 项目 | 参考 |完成|
 | --- | --- | --- |
